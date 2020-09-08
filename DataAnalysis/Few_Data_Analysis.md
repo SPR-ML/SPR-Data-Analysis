@@ -63,10 +63,11 @@ These grades are related with the course subject, Math or Portuguese:
     val df = spark.read.format("csv").option("header","true").option("sep", ";").load("hdfs://test:9000/user/hadoop/student.csv").rdd
 
 //Get Data Count
-	df.count()
+    df.count()
 
 /*
-Long = 649
+OUTPUT:
+    Long = 649
 */
 ```
 
@@ -107,7 +108,7 @@ Long = 649
     
     /*
     OUTPUT:
-    (GP,12.235618597320721)
+    	(GP,12.235618597320721)
 	(MS,10.482300884955754)
     */
 
