@@ -111,7 +111,7 @@ Long = 649
     /*
     OUTPUT:
     (GP,12.235618597320721)
-    (MS,10.482300884955754)
+	(MS,10.482300884955754)
     */
 
 ```
@@ -144,11 +144,11 @@ Long = 649
 * *There seems to be a weak  correlation between Male Versus Female*
 * *Finally, we decided to use all the attributes*
 
-## 6. Create New Features
+## 6. Create Extra Features
 
 ```scala
 /*
-Add the Following New Features:
+Add the Following Extra Features:
 33 allSup: schoolsup & famsup
 34 pairEdu: Medu & Fedu
 35 moreHigh: higher & (schoolsup | paid)
