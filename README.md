@@ -157,8 +157,8 @@ Add the Following Extra Features:
 38 studytimeRatio: studytime / (traveltime + studytime + freetime)
 
 Drop the Following Previous Features
-14 Dalc
-26 
+14 studytime
+27 Dalc
 */
 
 //Create New DataSet by Spark
@@ -288,6 +288,3 @@ object RandomData{
     }
 }
 ```
-
-
-
