@@ -155,16 +155,20 @@ Add the Following Extra Features:
 36 allAlc: Walc + Dalc 
 37 dalcPerWeek: Dalc / (Walc + Dalc)
 38 studytimeRatio: studytime / (traveltime + studytime + freetime)
+
+Drop the Following Previous Features
+14 Dalc
+26 
 */
 
 //Create New DataSet by Spark
-      val rr = rddA.map(line => {
+    val rr = rddA.map(line => {
       val allSup = strToBool(line(15)) && strToBool(line(16)) // allSup = schoolsup & famsup
       val pairEdu = strToBool(line(6)) && strToBool(line(7)) // pairEdu = Medu & Fedu
       val moreHigh = strToBool(line(20)) && (strToBool(line(15)) || strToBool(line(17))) // moreHigh = higher & (schoolsup | paid)
-      val allAlc = line(26).toInt + line(27).toInt // allAlc = Walc + Dalc 
-      val dalcPerWeek = line(27).toDouble / allAlc // dalcPerWeek = Dalc / allAlc
-      val studytimeRatio = line(13).toDouble / (line(12).toInt + line(13).toInt + line(24).toInt) //studytimeRatio = studytime / (traveltime + studytime + freetime)
+      val allAlc = line(26).toInt + line(27).toInt // allAlc = Dalc + Walc 
+      val dalcPerWeek = line(26).toDouble / allAlc // dalcPerWeek = Dalc / allAlc
+      val studytimeRatio = line(13).toDouble / (line(12).toInt + line(13).toInt + line(24).toInt) // studytimeRatio = studytime / (traveltime + studytime + freetime)
       val allSup1 = String.valueOf(allSup)
       val pairEdu1 = String.valueOf(pairEdu)
       val moreHigh1 = String.valueOf(moreHigh)
@@ -172,8 +176,10 @@ Add the Following Extra Features:
       val dalcPerWeek1 = String.valueOf(dalcPerWeek)
       val studytimeRatio1 = String.valueOf(studytimeRatio)
       line ++= Array(allSup1, pairEdu1, moreHigh1, allAlc1, dalcPerWeek1, studytimeRatio1)
+      line.remove(26) // drop Dalc
+      line.remove(13) // drop studytime
       line.mkString(",")
-    }).coalesce(1,true).saveAsTextFile("/home/hadoop/student/output")
+    }).coalesce(1,true).saveAsTextFile("hdfs://test:9000/user/hadoop/output_Data")
 
 ```
 
